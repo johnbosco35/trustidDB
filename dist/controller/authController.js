@@ -45,7 +45,7 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const token = jsonwebtoken_1.default.sign({ userId: user._id }, process.env.JWT_SECRET, {
             expiresIn: "1h",
         });
-        res.json({ token });
+        res.json({ token, id: user._id, name: user.username });
     }
     catch (err) {
         res.status(500).json({ error: err.message });
